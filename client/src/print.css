@@ -1,0 +1,28 @@
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .app-header,
+    .editor-panel,
+    .preview-panel {
+        display: none !important;
+        /* We hide the containers but we need the content of the ref to be visible. 
+       react-to-print handles copying the ref content to a new window/iframe usually.
+       But if printing the whole page: */
+    }
+
+    /* When using react-to-print, it usually isolates the component. 
+     However, if we rely on global styles, we need to ensure they apply. */
+
+    /* Reset body margin for print */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+}
