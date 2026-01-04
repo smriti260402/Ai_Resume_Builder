@@ -62,8 +62,14 @@ const Experience = () => {
                                     <input type="text" value={item.endDate} onChange={(e) => handleChange(item.id, 'endDate', e.target.value)} placeholder="MM/YYYY" disabled={item.current} />
                                 </div>
                             </div>
-                            <div style={{ marginTop: '5px' }}>
-                                <input type="checkbox" checked={item.current} onChange={(e) => handleChange(item.id, 'current', e.target.checked)} /> Current
+                            <div style={{ marginTop: '5px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                <input
+                                    type="checkbox"
+                                    checked={item.current}
+                                    onChange={(e) => handleChange(item.id, 'current', e.target.checked)}
+                                    style={{ width: 'auto', margin: 0 }}
+                                />
+                                <span style={{ fontSize: '0.9em', color: '#64748b' }}>Current</span>
                             </div>
                         </div>
                         <div className="form-group full-width">

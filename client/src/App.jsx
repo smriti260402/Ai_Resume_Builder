@@ -20,25 +20,43 @@ const ProtectedRoute = ({ children }) => {
 // Header Component
 const Header = () => {
   const { user } = useResume();
+
   return (
-    <header className="app-header" style={{
-      backgroundColor: 'var(--surface-color)',
-      padding: 'var(--spacing-md) var(--spacing-xl)',
-      borderBottom: '1px solid var(--border-color)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      position: 'sticky',
-      top: 0,
-      zIndex: 10
-    }}>
-      <h1 style={{ fontSize: 'var(--font-size-xl)', color: 'var(--primary-color)', fontWeight: 'bold' }}>AI Resume Builder</h1>
+    <header
+      className="app-header"
+      style={{
+        backgroundColor: 'var(--surface-color)',
+        padding: 'var(--spacing-md) var(--spacing-xl)',
+        borderBottom: '1px solid var(--border-color)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10
+      }}
+    >
+      <img
+        src="/proimage.png"
+        alt="AI Resume Builder Logo"
+        style={{
+          height: "80px",
+          objectFit: "contain"
+        }}
+      />
+
+
       <nav>
-        {user && <span style={{ marginRight: '15px', fontWeight: 'bold' }}>Welcome, {user.name}</span>}
+        {user && (
+          <span style={{ marginRight: '15px', fontWeight: 'bold' }}>
+            Welcome, {user.name}
+          </span>
+        )}
       </nav>
     </header>
   );
-}
+};
+
 
 function App() {
   return (

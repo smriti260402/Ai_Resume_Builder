@@ -63,15 +63,41 @@ const Skills = () => {
 
             <div className="skills-grid" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 {skills.map(item => (
-                    <div key={item.id} className="skill-input-group" style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                    <div key={item.id} className="skill-input-group" style={{ position: 'relative', width: 'fit-content' }}>
                         <input
                             type="text"
                             value={item.name}
                             onChange={(e) => handleChange(item.id, 'name', e.target.value)}
                             placeholder="Skill"
-                            style={{ width: '150px' }}
+                            style={{
+                                width: '150px',
+                                paddingRight: '25px', // Make room for the cross button
+                                boxSizing: 'border-box'
+                            }}
                         />
-                        <button type="button" onClick={() => handleRemove(item.id)} className="remove-btn">&times;</button>
+                        <button
+                            type="button"
+                            onClick={() => handleRemove(item.id)}
+                            style={{
+                                position: 'absolute',
+                                right: '5px',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                background: 'transparent',
+                                border: 'none',
+                                color: '#9ca3af',
+                                fontSize: '1.2em',
+                                cursor: 'pointer',
+                                padding: '0',
+                                lineHeight: '1',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                            title="Remove skill"
+                        >
+                            &times;
+                        </button>
                     </div>
                 ))}
                 <button type="button" onClick={handleAdd} className="add-btn" style={{ height: '38px', padding: '0 15px' }}>+</button>
