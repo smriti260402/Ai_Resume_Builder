@@ -15,6 +15,7 @@ const PersonalDetails = () => {
     const handleGenerateSummary = async () => {
         if (!experience || experience.length === 0) {
             alert('Please add some experience first so the AI can write a better summary.');
+            return;
         }
 
         const currentRole = experience.find(e => e.current)?.title || experience[0]?.title || 'Professional';
