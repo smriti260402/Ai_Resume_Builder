@@ -19,7 +19,7 @@ Clone the project to your local machine:
 
 ```bash
 
-git clone <repository-url>
+git clone https://github.com/smriti260402/Ai_Resume_Builder.git
 cd AiResumeBuilder
 
 ```
