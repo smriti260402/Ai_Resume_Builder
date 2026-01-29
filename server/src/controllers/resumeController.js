@@ -1,7 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// Create new resume
 const createResume = async (req, res) => {
     try {
         const { title, content } = req.body;
@@ -17,12 +16,10 @@ const createResume = async (req, res) => {
 
         res.status(201).json(resume);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Failed to create resume' });
     }
 };
 
-// Get all resumes for a user
 const getResumes = async (req, res) => {
     try {
         const userId = req.user.userId;
@@ -36,7 +33,6 @@ const getResumes = async (req, res) => {
     }
 };
 
-// Get single resume
 const getResumeById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -56,14 +52,12 @@ const getResumeById = async (req, res) => {
     }
 };
 
-// Update resume
 const updateResume = async (req, res) => {
     try {
         const { id } = req.params;
         const { title, content } = req.body;
         const userId = req.user.userId;
 
-        // Verify ownership
         const existingResume = await prisma.resume.findFirst({
             where: { id: parseInt(id), userId }
         });
@@ -82,18 +76,15 @@ const updateResume = async (req, res) => {
 
         res.json(updatedResume);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Failed to update resume' });
     }
 };
 
-// Delete resume
 const deleteResume = async (req, res) => {
     try {
         const { id } = req.params;
         const userId = req.user.userId;
 
-        // Verify ownership
         const existingResume = await prisma.resume.findFirst({
             where: { id: parseInt(id), userId }
         });
